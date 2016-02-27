@@ -86,8 +86,8 @@ echo ----
 
 docker -H tcp://$publicipSWARMK:8333 run -d --name www -p 80:80 nginx
 
-echo ${RED}Connect to $publicipSWARMK Port 8333 to manage the Swarm Cluster
-echo Connect to $publicipK1 Port 80 to test the App deployed by Swarm${NC}
+echo ${RED}Connect to $publicipSWARMK Port 8333 to manage the Swarm Cluster${NC}
+echo Connect to $publicipK1 Port 80 to test the App deployed by Swarm
 
 
 #KILLS SWARM (Testing purposes)
