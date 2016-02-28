@@ -80,7 +80,27 @@ docker run -d -p 8333:2375 swarm manage consul://$publicipCONSULK:8500/swarm
 echo ----
 echo SWARM  RUNNING ON $publicipSWARMK
 echo publicipSWARMK=$publicipSWARMK
+echo Consul RUNNING ON $publicipCONSULK
 echo ----
+
+#Spawns VM2 with new UUID
+UUID2K=$(cat /proc/sys/kernel/random/uuid)
+
+#docker-machine create --driver amazonec2
+docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION SPAWN-$UUID2K
+
+docker-machine env SPAWN-$UUID2K > /home/ec2-user/Docker2
+. /home/ec2-user/Docker2
+
+publicipK2=$(docker-machine ip SPAWN-$UUID2K)
+
+#Launches a Container to join the VM to a SWARM Cluster
+docker run -d swarm join --addr=$publicipK2:2375 consul://$publicipCONSULK:8500/swarm
+
+echo ----
+echo Second Slave RUNNING ON $publicipK2
+echo ----
+
 
 #Launches a Container using SWARM
 
@@ -89,6 +109,9 @@ docker -H tcp://$publicipSWARMK:8333 run -d --name www -p 80:80 nginx
 echo ${RED}Connect to $publicipSWARMK Port 8333 to manage the Swarm Cluster${NC}
 echo Connect to $publicipK1 Port 80 to test the App deployed by Swarm
 
+echo ----
+echo App RUNNING ON $publicipK1
+echo ----
 
 #KILLS SWARM (Testing purposes)
 docker-machine rm SPAWN-SWARM
