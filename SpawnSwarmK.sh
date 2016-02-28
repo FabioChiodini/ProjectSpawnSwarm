@@ -112,6 +112,7 @@ echo Connect to $publicipK1 Port 80 to test the App deployed by Swarm
 echo ----
 echo App RUNNING ON $publicipK1
 echo ----
+echo run docker -H tcp://$publicipSWARMK:8333 ps TO check swarm status
 
 #KILLS SWARM (Testing purposes)
 docker-machine rm SPAWN-SWARM
