@@ -13,10 +13,10 @@ one VM with Consul in Docker (used also to prepare docker Discovery)
 
 One VM hosting the Docker swarm in a Docker container
 
-Two VMs as "slaves"
+A number of VMs (specified in the variable export InstancesK) as "slaves"
 
 
-It then starts a Docker Container (nginx) via Docker Swarm (you can change this easily)
+It then starts many Docker Containers (nginx) via Docker Swarm (the numbert of instances is specified in the variable export InstancesK)
 
 It also opens up all required port on AWS Security Groups
 
@@ -35,6 +35,8 @@ export K1_AWS_ZONE=b
 export K1_AWS_DEFAULT_REGION=us-east-1
 
 export AWS_DEFAULT_REGION=us-east-1
+
+export InstancesK=2
 
 The first five variable are used by the docker-machine command, the last one is used by AWS cli (to edit the security group)
 
