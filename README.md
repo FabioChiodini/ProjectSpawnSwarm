@@ -1,17 +1,22 @@
 # ProjectSpawnSwarm
-Project to spawn Web servers using Docker Machine Swarm and Consul
+Project to spawn Web servers using Docker Machine, Docker Swarm and Docker Discovery (Consul still TBI)
 
-This creates
-one VM with Consul in Docker
+To install the prerequisites on an AMI image use this:
+
+https://github.com/FabioChiodini/AWSDockermachine
+
+
+This script creates:
+one VM with Consul in Docker (used also to prepare docker Discovery)
+
+One VM hosting the Docker swarm in a Docker container
 
 Two VMs as "slaves"
-
-One Vm hosting the Docker swarm in a Docker container
 
 
 It then starts a Docker Container (nginx) via Docker Swarm
 
-
+It also opens up all required port on AWS Security Groups
 
 It uses a file to load the variables needed (/home/ec2-user/Cloud1).
 
@@ -29,4 +34,4 @@ export K1_AWS_DEFAULT_REGION=us-east-1
 
 export AWS_DEFAULT_REGION=us-east-1
 
-The first five variable are used by the docker-machine command, the last one is used by aws cli (to edit the security group)
+The first five variable are used by the docker-machine command, the last one is used by AWS cli (to edit the security group)
