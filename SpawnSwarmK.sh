@@ -49,7 +49,7 @@ tail -1 /home/ec2-user/kiodo1 > /home/ec2-user/SwarmToken
 SwarmTokenK=$(cat /home/ec2-user/SwarmToken)
 
 echo ----
-echo Check swarm token on https://discovery.hub.docker.com/v1/clusters/$SwarmTokenK
+echo "$(tput setaf 1) Check swarm token on https://discovery.hub.docker.com/v1/clusters/$SwarmTokenK $(tput sgr 0)"
 echo ----
 
 #Create Swarm Master
