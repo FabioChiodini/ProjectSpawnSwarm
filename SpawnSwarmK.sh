@@ -117,8 +117,8 @@ stringk=$(eval $(docker-machine env --swarm swarm-master))
 echo ----
 echo "$(tput setaf 1) SWARM  RUNNING ON $publicipSWARMK $(tput sgr 0)"
 echo "$(tput setaf 1) run $stringK TO connect to the cluster $(tput sgr 0)"
-echo THEN run docker info TO check swarm status
-echo RUN docker ps TO check which containers are running
+echo THEN run "docker info" TO check swarm status
+echo RUN "docker ps" TO check which containers are running
 echo ----
 echo "$(tput setaf 1) Check swarm token on https://discovery.hub.docker.com/v1/clusters/$SwarmTokenK $(tput sgr 0)"
 echo ----
