@@ -69,7 +69,7 @@ docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_K
 aws ec2 authorize-security-group-ingress --group-name docker-machine --protocol tcp --port 8333 --cidr 0.0.0.0/0
 
 #Connects to remote VM
-docker-machine env SPAWN-SWARM > /home/ec2-user/SWARM1
+docker-machine env swarm-master > /home/ec2-user/SWARM1
 . /home/ec2-user/SWARM1
 
 publicipSWARMK=$(docker-machine ip swarm-master)
