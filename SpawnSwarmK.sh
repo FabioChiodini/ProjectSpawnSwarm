@@ -71,48 +71,44 @@ echo publicipSWARMK=$publicipSWARMK
 echo Consul RUNNING ON $publicipCONSULK
 echo ----
 
+#Loops for creating Swarm nodes
+#Starts #InstancesK VMs using Docker machine and connects them to Swarm
 
-#Prepares one VM to be joined to SWARM Cluster
+i=0
+while [ $i -lt $InstancesK ]
+do
+    echo "output: $i"
+    UUIDK=$(cat /proc/sys/kernel/random/uuid)
+    echo Provisioning VM SPAWN$i-$UUIDK
+    docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION --swarm --swarm-discovery token://$SwarmTokenK SPAWN$i-$UUIDK
 
-#Spawns VM with UUID
-UUIDK1=$(cat /proc/sys/kernel/random/uuid)
+    #Stores ip of the VM
+    docker-machine env SPAWN$i-$UUIDK > /home/ec2-user/Docker$i
+    . /home/ec2-user/Docker$i
 
-
-docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION --swarm --swarm-discovery token://$SwarmTokenK SPAWN-$UUIDK1 
-
-#Stores ip of the VM
-docker-machine env SPAWN-$UUIDK1 > /home/ec2-user/Docker1
-. /home/ec2-user/Docker1
-
-publicipK1=$(docker-machine ip SPAWN-$UUIDK1)
-echo ----
-echo "$(tput setaf 1) Machine $publicipK1 connected to SWARM $(tput sgr 0)"
-echo ----
-
-
-
-
-#Spawns VM2 with new UUID
-UUIDK2=$(cat /proc/sys/kernel/random/uuid)
-
-#docker-machine create --driver amazonec2
-docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION --swarm --swarm-discovery token://$SwarmTokenK SPAWN-$UUIDK2
-
-docker-machine env SPAWN-$UUIDK2 > /home/ec2-user/Docker2
-. /home/ec2-user/Docker2
-
-publicipK2=$(docker-machine ip SPAWN-$UUIDK2)
-
-echo ----
-echo "$(tput setaf 1) Second Slave RUNNING ON $publicipK2 $(tput sgr 0)"
-echo ----
+    publicipK=$(docker-machine ip SPAWN$i-$UUIDK)
+    echo ----
+    echo "$(tput setaf 1) Machine $publicipK connected to SWARM $(tput sgr 0)"
+    echo ----
+    true $(( i++ ))
+done
 
 
-#Launches a Container using SWARM
+#Launches $instancesK Containers using SWARM
+
 
 eval $(docker-machine env --swarm swarm-master)
 
-docker run -d --name www -p 80:80 nginx
+i=0
+while [ $i -lt $InstancesK ]
+do
+    echo "output: $i"
+    UUIDK=$(cat /proc/sys/kernel/random/uuid)
+    echo Provisioning Container $i
+    docker run -d --name www -p 80:80 nginx
+    true $(( i++ ))
+done
+
 
 docker ps
 
