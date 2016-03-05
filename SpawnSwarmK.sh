@@ -32,7 +32,7 @@ docker-machine env SPAWN-CONSUL > /home/ec2-user/CONSUL1
 
 publicipCONSULK=$(docker-machine ip SPAWN-CONSUL)
 
-#Launches a remore Consul instance
+#Launches a remote Consul instance
 
 docker run -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp -h node1 progrium/consul -server -bootstrap
 
@@ -41,6 +41,23 @@ echo ----
 echo Consul RUNNING ON $publicipCONSULK
 echo publicipCONSULK=$publicipCONSULK
 echo ----
+
+#Jonas Style Launch Swarm
+
+#Launches another temporary container
+
+docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION -d virtualbox localK
+
+#Connects to Container
+docker-machine env localK > /home/ec2-user/localK
+. /home/ec2-user/localK
+
+#Creates swarm ID and stores it into file and variable
+docker run swarm create > /home/ec2-user/kiodo1
+tail -1 /home/ec2-user/kiodo1 > /home/ec2-user/SwarmToken
+
+SwarmTokenK=$(cat /home/ec2-user/SwarmToken)
+
 
 
 #Prepares one VM to be joined to SWARM Cluster
