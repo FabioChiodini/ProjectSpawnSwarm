@@ -66,7 +66,7 @@ publicipSWARMK=$(docker-machine ip swarm-master)
 
 
 echo ----
-echo "$(tput setab 7) SWARM  RUNNING ON $publicipSWARMK (tput sgr 0)"
+echo "$(tput setaf 1) SWARM  RUNNING ON $publicipSWARMK $(tput sgr 0)"
 echo publicipSWARMK=$publicipSWARMK
 echo Consul RUNNING ON $publicipCONSULK
 echo ----
@@ -86,7 +86,7 @@ docker-machine env SPAWN-$UUIDK1 > /home/ec2-user/Docker1
 
 publicipK1=$(docker-machine ip SPAWN-$UUIDK1)
 echo ----
-echo "$(tput setaf 1) Machine $publicipK1 connected to SWARM (tput sgr 0)"
+echo "$(tput setaf 1) Machine $publicipK1 connected to SWARM $(tput sgr 0)"
 echo ----
 
 
@@ -104,7 +104,7 @@ docker-machine env SPAWN-$UUIDK2 > /home/ec2-user/Docker2
 publicipK2=$(docker-machine ip SPAWN-$UUIDK2)
 
 echo ----
-echo "$(tput setaf 1) Second Slave RUNNING ON $publicipK2 (tput sgr 0)"
+echo "$(tput setaf 1) Second Slave RUNNING ON $publicipK2 $(tput sgr 0)"
 echo ----
 
 
@@ -119,12 +119,12 @@ docker ps
 stringk=$(eval $(docker-machine env --swarm swarm-master))
 
 echo ----
-echo "$(tput setab 7) SWARM  RUNNING ON $publicipSWARMK (tput sgr 0)"
-echo "$(tput setaf 1) run $stringK TO connect to the cluster (tput sgr 0)"
+echo "$(tput setaf 1) SWARM  RUNNING ON $publicipSWARMK $(tput sgr 0)"
+echo "$(tput setaf 1) run $stringK TO connect to the cluster $(tput sgr 0)"
 echo THEN run docker info TO check swarm status
 echo RUN docker ps TO check which containers are running
 echo ----
-echo "$(tput setaf 1) Check swarm token on https://discovery.hub.docker.com/v1/clusters/$SwarmTokenK (tput sgr 0)"
+echo "$(tput setaf 1) Check swarm token on https://discovery.hub.docker.com/v1/clusters/$SwarmTokenK $(tput sgr 0)"
 echo ----
 
 #Optionally close all non useful ports
