@@ -38,7 +38,7 @@ docker run -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp -h node1 progrium/consul 
 
 
 echo ----
-echo Consul RUNNING ON $publicipCONSULK
+echo ${RED} Consul RUNNING ON $publicipCONSULK ${NC}
 echo publicipCONSULK=$publicipCONSULK
 echo ----
 
@@ -58,7 +58,9 @@ tail -1 /home/ec2-user/kiodo1 > /home/ec2-user/SwarmToken
 
 SwarmTokenK=$(cat /home/ec2-user/SwarmToken)
 
-
+echo ----
+echo Check swarm token on https://discovery.hub.docker.com/v1/clusters/$SwarmTokenK
+echo ----
 
 #Prepares one VM to be joined to SWARM Cluster
 
