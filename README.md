@@ -36,9 +36,10 @@ export K1_AWS_DEFAULT_REGION=us-east-1
 
 export AWS_DEFAULT_REGION=us-east-1
 
-export InstancesK=2
+export VM-InstancesK=2
+export Container-InstancesK=3
 
-The first five variable are used by the docker-machine command, the export AWS_DEFAULT_REGION variable is used by AWS cli (to edit the security group) and the the last one is use to determine the VM/Containers instances to run
+The first five variable are used by the docker-machine command, the export AWS_DEFAULT_REGION variable is used by AWS cli (to edit the security group) and the the last two are used to determine the VM/Containers instances to run
 
 
 @FabioChiodini
