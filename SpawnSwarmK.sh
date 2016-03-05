@@ -28,7 +28,7 @@ docker run -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp -h node1 progrium/consul 
 
 
 echo ----
-echo ${RED} Consul RUNNING ON $publicipCONSULK ${NC}
+echo Consul RUNNING ON $publicipCONSULK
 echo publicipCONSULK=$publicipCONSULK
 echo ----
 
@@ -66,7 +66,7 @@ publicipSWARMK=$(docker-machine ip swarm-master)
 
 
 echo ----
-echo SWARM  RUNNING ON $publicipSWARMK
+echo "$(tput setab 7) SWARM  RUNNING ON $publicipSWARMK (tput sgr 0)"
 echo publicipSWARMK=$publicipSWARMK
 echo Consul RUNNING ON $publicipCONSULK
 echo ----
@@ -86,7 +86,7 @@ docker-machine env SPAWN-$UUIDK1 > /home/ec2-user/Docker1
 
 publicipK1=$(docker-machine ip SPAWN-$UUIDK1)
 echo ----
-echo Machine $publicipK1 connected to SWARM
+echo "$(tput setaf 1) Machine $publicipK1 connected to SWARM (tput sgr 0)"
 echo ----
 
 
@@ -104,7 +104,7 @@ docker-machine env SPAWN-$UUIDK2 > /home/ec2-user/Docker2
 publicipK2=$(docker-machine ip SPAWN-$UUIDK2)
 
 echo ----
-echo Second Slave RUNNING ON $publicipK2
+echo "$(tput setaf 1) Second Slave RUNNING ON $publicipK2 (tput sgr 0)"
 echo ----
 
 
@@ -113,6 +113,8 @@ echo ----
 eval $(docker-machine env --swarm swarm-master)
 
 docker run -d --name www -p 80:80 nginx
+
+docker ps
 
 stringk=$(eval $(docker-machine env --swarm swarm-master))
 
