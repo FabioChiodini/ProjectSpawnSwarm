@@ -1,13 +1,3 @@
-NC='\033[0m'              #No Color  
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
-
 
 #Load Env variables from File (maybe change to DB)
 #using /home/ec2-user/Cloud1
@@ -124,11 +114,16 @@ eval $(docker-machine env --swarm swarm-master)
 
 docker run -d --name www -p 80:80 nginx
 
+stringk=$(eval $(docker-machine env --swarm swarm-master))
 
-
-echo run eval $(docker-machine env --swarm swarm-master) TO connect to the cluster
+echo ----
+echo "$(tput setab 7) SWARM  RUNNING ON $publicipSWARMK (tput sgr 0)"
+echo "$(tput setaf 1) run $stringK TO connect to the cluster (tput sgr 0)"
 echo THEN run docker info TO check swarm status
 echo RUN docker ps TO check which containers are running
+echo ----
+echo "$(tput setaf 1) Check swarm token on https://discovery.hub.docker.com/v1/clusters/$SwarmTokenK (tput sgr 0)"
+echo ----
 
 #Optionally close all non useful ports
 
