@@ -100,12 +100,12 @@ done
 eval $(docker-machine env --swarm swarm-master)
 
 i=0
-while [ $i -lt $InstancesK ]
+while [ $i -lt $Container-InstancesK ]
 do
     echo "output: $i"
     UUIDK=$(cat /proc/sys/kernel/random/uuid)
     echo Provisioning Container $i
-    docker run -d --name www -p 80:80 nginx
+    docker run -d --name www-$i -p 80:80 nginx
     true $(( i++ ))
 done
 
