@@ -120,18 +120,20 @@ echo ----
 
 #Launches a Container using SWARM
 
-docker -H tcp://$publicipSWARMK:8333 run -d --name www -p 80:80 nginx
+eval $(docker-machine env --swarm swarm-master)
 
-echo ${RED}Connect to $publicipSWARMK Port 8333 to manage the Swarm Cluster${NC}
-echo Connect to $publicipK1 Port 80 to test the App deployed by Swarm
+docker run -d --name www -p 80:80 nginx
 
-echo ----
-echo App RUNNING ON $publicipK1
-echo ----
-echo run docker -H tcp://$publicipSWARMK:8333 ps TO check swarm status
 
-#KILLS SWARM (Testing purposes)
-docker-machine rm SPAWN-SWARM
+
+echo run eval $(docker-machine env --swarm swarm-master) TO connect to the cluster
+echo THEN run docker info TO check swarm status
+echo RUN docker ps TO check which containers are running
+
+#Optionally close all non useful ports
+
+#KILLS SWARM (Testing purposes cleanup)
+docker-machine rm swarm-master
 docker-machine rm SPAWN-CONSUL
 docker-machine rm SPAWN-$UUIDK1
 docker-machine rm SPAWN-$UUIDK2
