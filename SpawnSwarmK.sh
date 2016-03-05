@@ -128,8 +128,8 @@ echo ----
 #KILLS SWARM (Testing purposes cleanup)
 docker-machine rm swarm-master
 docker-machine rm SPAWN-CONSUL
-docker-machine rm SPAWN-$UUIDK1
-docker-machine rm SPAWN-$UUIDK2
+docker-machine rm SPAWN-FigureITOUT
+
 
 
 
