@@ -72,10 +72,10 @@ echo Consul RUNNING ON $publicipCONSULK
 echo ----
 
 #Loops for creating Swarm nodes
-#Starts #InstancesK VMs using Docker machine and connects them to Swarm
+#Starts #VM-InstancesK VMs using Docker machine and connects them to Swarm
 
 i=0
-while [ $i -lt $InstancesK ]
+while [ $i -lt $VM-InstancesK ]
 do
     echo "output: $i"
     UUIDK=$(cat /proc/sys/kernel/random/uuid)
