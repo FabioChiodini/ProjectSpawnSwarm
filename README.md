@@ -1,6 +1,8 @@
 # ProjectSpawnSwarm
 Project to spawn Web servers using Docker Machine, Docker Swarm and Docker Discovery (Consul still TBI)
 
+Tested on a t1.micro AMI
+
 To install the prerequisites on an AMI image use this:
 
 https://github.com/FabioChiodini/AWSDockermachine
@@ -14,7 +16,7 @@ One VM hosting the Docker swarm in a Docker container
 Two VMs as "slaves"
 
 
-It then starts a Docker Container (nginx) via Docker Swarm
+It then starts a Docker Container (nginx) via Docker Swarm (you can change this easily)
 
 It also opens up all required port on AWS Security Groups
 
@@ -35,3 +37,5 @@ export K1_AWS_DEFAULT_REGION=us-east-1
 export AWS_DEFAULT_REGION=us-east-1
 
 The first five variable are used by the docker-machine command, the last one is used by AWS cli (to edit the security group)
+
+@FabioChiodini
