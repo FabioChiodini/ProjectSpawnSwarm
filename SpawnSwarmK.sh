@@ -74,6 +74,31 @@ echo ----
 #Loops for creating Swarm nodes
 #Starts #VM-InstancesK VMs using Docker machine and connects them to Swarm
 
+# Spawns to GCE
+if [ $GCEKProvision -eq 1 ]; then
+  echo ""
+  echo "$(tput setaf 1)Spawning to GCE $(tput sgr 0)"
+  echo ""
+  j=0
+  UUIDK=$(cat /proc/sys/kernel/random/uuid)
+echo Provisioning VM SPAWN-GCE$j-$UUIDK
+  #docker-machine create -d google --google-project ${GCE_PROJECT} env-crate
+  #docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-$UUIDK
+    
+  #Stores ip of the VM
+  #docker-machine env SPAWN-GCE$j-$UUIDK > /home/ec2-user/Docker$j
+  #. /home/ec2-user/Docker$j
+  
+  #publicipK=$(docker-machine ip SPAWNGCE$j-$UUIDK)
+  #echo ----
+  #echo "$(tput setaf 1) Machine $publicipK in GCE connected to SWARM $(tput sgr 0)"
+  #echo ----
+
+fi
+
+
+
+
 i=0
 while [ $i -lt $VM-InstancesK ]
 do
