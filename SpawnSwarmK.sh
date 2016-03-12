@@ -5,9 +5,9 @@
 . /home/ec2-user/Cloud1
 
 
-echo " Starting $VM_InstancesK Instances in AWS"
+echo "$(tput setaf 2) Starting $VM_InstancesK Instances in AWS $(tput sgr 0)"
 if [ $GCEKProvision -eq 1 ]; then
-  echo " Starting $GCEVM_InstancesK Instances in GCE"
+  echo "$(tput setaf 2) Starting $GCEVM_InstancesK Instances in GCE $(tput sgr 0)"
 fi
 
 echo ""
