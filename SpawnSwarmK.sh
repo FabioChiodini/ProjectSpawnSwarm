@@ -139,6 +139,8 @@ do
     true $(( i++ ))
 done
 
+#Opens Firewall Port 80 for all docker Machines on AWS
+aws ec2 authorize-security-group-ingress --group-name docker-machine --protocol tcp --port 80 --cidr 0.0.0.0/0
 
 docker ps
 
