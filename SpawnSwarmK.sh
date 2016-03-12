@@ -5,7 +5,7 @@
 . /home/ec2-user/Cloud1
 
 
-echo " Starting $VM_InstancesK in AWS"
+echo " Starting $VM_InstancesK Instances in AWS"
 
 printenv AWS_SECRET_KEY
 
