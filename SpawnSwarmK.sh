@@ -6,6 +6,11 @@
 
 
 echo " Starting $VM_InstancesK Instances in AWS"
+if [ $GCEKProvision -eq 1 ]; then
+  echo " Starting $GCEVM_InstancesK Instances in GCE"
+fi
+
+echo "STARTING"
 
 printenv AWS_SECRET_KEY
 
