@@ -79,6 +79,10 @@ if [ $GCEKProvision -eq 1 ]; then
   echo ""
   echo "$(tput setaf 1)Spawning to GCE $(tput sgr 0)"
   echo ""
+  
+  #open Port 80 on GCE VMs
+  #Still TBD
+  
   j=0
   UUIDK=$(cat /proc/sys/kernel/random/uuid)
   echo Provisioning VM SPAWN-GCE$j-$UUIDK
