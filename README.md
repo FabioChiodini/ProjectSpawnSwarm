@@ -42,4 +42,19 @@ export Container-InstancesK=3
 The first five variable are used by the docker-machine command, the export AWS_DEFAULT_REGION variable is used by AWS cli (to edit the security group) and the the last two are used to determine the VM/Containers instances to run
 
 
+
+Spawning to GCE
+To spawn VMs to GCE you need to set up an account
+Enable the Compute Engine API
+Create credentials (Service account keys type) and download the json file to /home/ec2-user/GCEkeyfile.json
+[Following steps must still be automated]
+Launch interactively (one time) this command:
+gcloud auth
+From the output of the command get the https link and paste it into a browser
+From the browser authorize the access and gert the string
+relaunch the command
+gcloud auth
+Paste the string when asked
+
+
 @FabioChiodini
