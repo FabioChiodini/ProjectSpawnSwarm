@@ -82,6 +82,12 @@ if [ $GCEKProvision -eq 1 ]; then
   
   #open Port 80 on GCE VMs
   #Still TBD
+  gcloud config set project $K2_GOOGLE_PROJECT
+  #Open ports for Swarm
+  gcloud compute firewall-rules create swarm-machines --allow tcp:3376 --source-ranges 0.0.0.0/0 --target-tags docker-machine --project $K2_GOOGLE_PROJECT
+  #Opens Port 80 for Docker machine on GCE
+  gcloud compute firewall-rules create http80-machines --allow tcp:80 --source-ranges 0.0.0.0/0 --target-tags docker-machine --project $K2_GOOGLE_PROJECT
+  
   
   j=0
   UUIDK=$(cat /proc/sys/kernel/random/uuid)
