@@ -5,7 +5,7 @@
 . /home/ec2-user/Cloud1
 
 
-echo " Starting $VM-InstancesK in AWS"
+echo " Starting $VM_InstancesK in AWS"
 
 printenv AWS_SECRET_KEY
 
@@ -116,7 +116,7 @@ fi
 
 #Starts #VM-InstancesK VMs using Docker machine and connects them to Swarm
 i=0
-while [ $i -lt $VM-InstancesK ]
+while [ $i -lt $VM_InstancesK ]
 do
     echo "output: $i"
     UUIDK=$(cat /proc/sys/kernel/random/uuid)
@@ -141,7 +141,7 @@ done
 eval $(docker-machine env --swarm swarm-master)
 
 i=0
-while [ $i -lt $Container-InstancesK ]
+while [ $i -lt $Container_InstancesK ]
 do
     echo "output: $i"
     UUIDK=$(cat /proc/sys/kernel/random/uuid)
