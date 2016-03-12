@@ -83,7 +83,7 @@ if [ $GCEKProvision -eq 1 ]; then
   UUIDK=$(cat /proc/sys/kernel/random/uuid)
   echo Provisioning VM SPAWN-GCE$j-$UUIDK
   #gcloud auth
-  #docker-machine create -d google --google-project ${GCE_PROJECT} env-crate
+  #docker-machine create -d google --google-project $K2_GOOGLE_PROJECT env-crate
   #docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-$UUIDK
   
   #Stores ip of the VM
