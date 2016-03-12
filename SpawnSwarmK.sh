@@ -10,7 +10,9 @@ if [ $GCEKProvision -eq 1 ]; then
   echo " Starting $GCEVM_InstancesK Instances in GCE"
 fi
 
+echo ""
 echo "STARTING"
+echo ""
 
 printenv AWS_SECRET_KEY
 
