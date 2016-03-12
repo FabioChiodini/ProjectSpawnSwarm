@@ -4,6 +4,9 @@
 #source /home/ec2-user/Cloud1
 . /home/ec2-user/Cloud1
 
+
+echo " Starting $VM-InstancesK in AWS"
+
 printenv AWS_SECRET_KEY
 
 printenv AWS_VPC_ID
