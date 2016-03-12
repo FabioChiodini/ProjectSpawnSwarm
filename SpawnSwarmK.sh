@@ -108,13 +108,13 @@ if [ $GCEKProvision -eq 1 ]; then
   echo Provisioning VM SPAWN-GCE$j-K
   echo ""
   
-  docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --google-machine-image ubuntu-1510-wily-v20151114 --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-K
-  
+  #docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --google-machine-image ubuntu-1510-wily-v20151114 --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-K
+  docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --swarm --swarm-discovery token://$SwarmTokenK env-crate-$j
   #Stores ip of the VM
-  docker-machine env SPAWN-GCE$j-K > /home/ec2-user/Docker$j
+  docker-machine env env-crate-$j > /home/ec2-user/Docker$j
   . /home/ec2-user/Docker$j
   
-  publicipKGCE=$(docker-machine ip SPAWNGCE$j-K)
+  publicipKGCE=$(docker-machine ip env-crate-$j)
   echo ----
   echo "$(tput setaf 1) Machine $publicipKGCE in GCE connected to SWARM $(tput sgr 0)"
   echo ----
