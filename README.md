@@ -63,17 +63,30 @@ GOOGLE_APPLICATION_CREDENTIALS maps to a file containing the Service account key
 
 
 NOTES ON Spawning to GCE
+
 To spawn VMs to GCE you need to set up an account
+
 Enable the Compute Engine API
+
 Create credentials (Service account keys type) and download the json file to /home/ec2-user/GCEkeyfile.json
+
 [Following steps must still be automated]
+
 Launch interactively (one time) this command:
-gcloud auth
+
+gcloud auth login
+
 From the output of the command get the https link and paste it into a browser
+
 From the browser authorize the access and get the string
+
 relaunch the command
-gcloud auth
+
+gcloud auth login
+
 Paste the string when asked
+
+-->>> I still have to make the GCE auth totally transparent :P
 
 
 @FabioChiodini
