@@ -94,7 +94,7 @@ if [ $GCEKProvision -eq 1 ]; then
   echo ""
   echo "$(tput setaf 1)Setting Firewall Rules on GCE $(tput sgr 0)"
   echo ""
-  gcloud auth
+  gcloud auth login
   gcloud config set project $K2_GOOGLE_PROJECT
   #Open ports for Swarm
   gcloud compute firewall-rules create swarm-machines --allow tcp:3376 --source-ranges 0.0.0.0/0 --target-tags docker-machine --project $K2_GOOGLE_PROJECT
@@ -107,7 +107,7 @@ if [ $GCEKProvision -eq 1 ]; then
   echo ""
   echo Provisioning VM SPAWN-GCE$j-K
   echo ""
-  gcloud auth
+  gcloud auth login
   docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-K
   
   #Stores ip of the VM
