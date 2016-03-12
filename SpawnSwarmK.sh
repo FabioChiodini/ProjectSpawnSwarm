@@ -84,6 +84,9 @@ if [ $GCEKProvision -eq 1 ]; then
   echo ""
   
   #open Port 80 on GCE VMs
+  echo ""
+  echo "$(tput setaf 1)Setting Firewall Rules on GCE $(tput sgr 0)"
+  echo ""
   gcloud auth
   gcloud config set project $K2_GOOGLE_PROJECT
   #Open ports for Swarm
@@ -95,17 +98,16 @@ if [ $GCEKProvision -eq 1 ]; then
   j=0
   UUIDK=$(cat /proc/sys/kernel/random/uuid)
   echo ""
-  echo Provisioning VM SPAWN-GCE$j-$UUIDK
+  echo Provisioning VM SPAWN-GCE$j-K
   echo ""
   gcloud auth
-  docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-$UUIDK
-  #docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-$UUIDK
+  docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-K
   
   #Stores ip of the VM
-  docker-machine env SPAWN-GCE$j-$UUIDK > /home/ec2-user/Docker$j
+  docker-machine env SPAWN-GCE$j-K > /home/ec2-user/Docker$j
   . /home/ec2-user/Docker$j
   
-  publicipKGCE=$(docker-machine ip SPAWNGCE$j-$UUIDK)
+  publicipKGCE=$(docker-machine ip SPAWNGCE$j-K)
   echo ----
   echo "$(tput setaf 1) Machine $publicipKGCE in GCE connected to SWARM $(tput sgr 0)"
   echo ----
