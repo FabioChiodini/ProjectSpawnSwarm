@@ -32,6 +32,7 @@ It uses a file to load the variables needed (/home/ec2-user/Cloud1).
 
 This file has the following format:
 
+```
 export K1_AWS_ACCESS_KEY=AKXXXXXX
 
 export K1_AWS_SECRET_KEY=LXXXXXXXXXX
@@ -53,7 +54,7 @@ export GCEVM_InstancesK=1
 
 export K2_GOOGLE_PROJECT=XXXXX
 export GOOGLE_APPLICATION_CREDENTIALS="/home/ec2-user/GCEkeyfile.json"
-
+```
 
 The first five variable are used by the docker-machine command, the export AWS_DEFAULT_REGION variable is used by AWS cli (to edit the security group) VM_InstancesK and VM_InstancesK are used to determine the VM/Containers instances to run
 
