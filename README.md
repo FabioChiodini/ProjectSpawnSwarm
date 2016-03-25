@@ -52,13 +52,19 @@ export GCEKProvision=1
 
 export GCEVM_InstancesK=1
 
-export K2_GOOGLE_PROJECT=XXXXX
+
+export K2_GOOGLE_AUTH_EMAIL=XXXXX@developer.gserviceaccount.com
+export K2_GOOGLE_PROJECT=XXXXXX
+export GOOGLE_APPLICATION_CREDENTIALS="/home/ec2-user/GCEkeyfile.json"
+
 export GOOGLE_APPLICATION_CREDENTIALS="/home/ec2-user/GCEkeyfile.json"
 ```
 
 The first five variable are used by the docker-machine command, the export AWS_DEFAULT_REGION variable is used by AWS cli (to edit the security group) VM_InstancesK and VM_InstancesK are used to determine the VM/Containers instances to run
 
 GCEKProvision is a flag to enable provisioning on GCE
+
+K2_GOOGLE_AUTH_EMAIL contains the google account email for your GCE project (shown in the manage service accounts panel, this is NOT your google email :P)
 
 K2_GOOGLE_PROJECT contains the project to targte for GCE
 
