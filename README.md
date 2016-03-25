@@ -85,23 +85,14 @@ To spawn VMs to GCE you need to set up an account, following are the high level 
 
 - Enable billing for your account
 
-[Following steps must still be automated]
+Then you need to perform these configurations
 
-Launch interactively (one time) this command:
+- Populate the configuration file /home/ec2-user/Cloud1 with your account details
+- Enable the flag to provision to GCE
+- Indicate a number of VMs to provision to GCE
 
-- gcloud auth login
 
-- From the output of the command get the https link and paste it into a browser
 
-- From the browser authorize the access and get the string
-
-- Relaunch the command
-
-- gcloud auth login
-
-- Paste the string when asked
-
--->>> I still have to make the GCE auth totally transparent :P
 
 
 @FabioChiodini
