@@ -72,7 +72,7 @@ K2_GOOGLE_PROJECT contains the project to targte for GCE
 
 GOOGLE_APPLICATION_CREDENTIALS maps to a file containing the Service account keys for your GCE Compute engine
 
-![Alt text](Cloud1File.png "Cloud1File")
+![Alt text](Cloud1.png "Cloud1")
 
 
 ## NOTES ON Spawning to GCE
