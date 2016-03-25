@@ -10,13 +10,13 @@ https://github.com/FabioChiodini/AWSDockermachine
 
 This script creates:
 
-one VM with Consul in Docker (used also to prepare docker Discovery)
+- one VM with Consul in Docker (used also to prepare docker Discovery)
 
-One VM hosting the Docker swarm in a Docker container
+- One VM hosting the Docker swarm in a Docker container
 
-A number of VMs in AWS (specified in the variable export VM_InstancesK) as "slaves"
+- A number of VMs in AWS (specified in the variable export VM_InstancesK) as "slaves"
 
-A number of VMs in GCE (specified in the variable export GCEVM_InstancesK) as "slaves" (still TBC) 
+- A number of VMs in GCE (specified in the variable export GCEVM_InstancesK) as "slaves" (still TBC) 
 
 
 It then starts many Docker Containers (nginx) via Docker Swarm (the number of instances is specified in the variable export InstancesK)
