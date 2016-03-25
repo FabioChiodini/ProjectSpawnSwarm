@@ -3,7 +3,7 @@ Project to spawn Web servers using Docker Machine, Docker Swarm and Docker Disco
 
 Tested on a t1.micro AMI
 
-To install the prerequisites on an AMI image use this:
+To install the prerequisites on an AMI image use this piece of code:
 
 https://github.com/FabioChiodini/AWSDockermachine
 
