@@ -1,5 +1,5 @@
 # ProjectSpawnSwarm
-Project to spawn a Dockerized application (in this example a Web server - NGINX) in an automated way accross different Clouds using Docker Machine, Docker Swarm and Docker Discovery (Consul still TBI)
+Project to spawn a Dockerized application (in this example a Web server - NGINX) in an automated way accross different Clouds (AWS and optionally GCE) using Docker Machine, Docker Swarm and Docker Discovery (Consul still TBI)
 
 Tested on a t1.micro AMI
 
