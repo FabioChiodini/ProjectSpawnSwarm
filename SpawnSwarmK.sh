@@ -102,24 +102,27 @@ if [ $GCEKProvision -eq 1 ]; then
   #Opens Port 80 for Docker machine on GCE
   gcloud compute firewall-rules create http80-machines --allow tcp:80 --source-ranges 0.0.0.0/0 --target-tags docker-machine --project $K2_GOOGLE_PROJECT
   
-  
+  #Loops for creating Swarm nodes
   j=0
-  UUIDK=$(cat /proc/sys/kernel/random/uuid)
-  echo ""
-  echo Provisioning VM SPAWN-GCE$j-K
-  echo ""
+  while [ $j -lt $GCEVM_InstancesK ]
+  do
+   UUIDK=$(cat /proc/sys/kernel/random/uuid)
+   echo ""
+   echo Provisioning VM SPAWN-GCE$j-K
+   echo ""
   
-  #docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --google-machine-image ubuntu-1510-wily-v20151114 --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-K
-  docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --swarm --swarm-discovery token://$SwarmTokenK env-crate-$j
-  #Stores ip of the VM
-  docker-machine env env-crate-$j > /home/ec2-user/Docker$j
-  . /home/ec2-user/Docker$j
+   #docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --google-machine-image ubuntu-1510-wily-v20151114 --swarm --swarm-discovery token://$SwarmTokenK SPAWN-GCE$j-K
+   docker-machine create -d google --google-project $K2_GOOGLE_PROJECT --swarm --swarm-discovery token://$SwarmTokenK env-crate-$j
+   #Stores ip of the VM
+   docker-machine env env-crate-$j > /home/ec2-user/Docker$j
+   . /home/ec2-user/Docker$j
   
-  publicipKGCE=$(docker-machine ip env-crate-$j)
-  echo ----
-  echo "$(tput setaf 1) Machine $publicipKGCE in GCE connected to SWARM $(tput sgr 0)"
-  echo ----
-
+   publicipKGCE=$(docker-machine ip env-crate-$j)
+   echo ----
+   echo "$(tput setaf 1) Machine $publicipKGCE in GCE connected to SWARM $(tput sgr 0)"
+   echo ----
+   true $(( j++ ))
+  done
 fi
 
 
