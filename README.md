@@ -72,7 +72,7 @@ To spawn VMs to GCE you need to set up an account, following are the high level 
 
 - Enable the Compute Engine API
 
-- Create credentials (Service account keys type) and download the json file to /home/ec2-user/GCEkeyfile.json
+- Create credentials (Service account keys type - JSON format) and download the json file to /home/ec2-user/GCEkeyfile.json
 
 [Following steps must still be automated]
 
