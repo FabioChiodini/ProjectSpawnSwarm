@@ -124,7 +124,7 @@ fi
 
 
 
-#Starts #VM-InstancesK VMs using Docker machine and connects them to Swarm
+#Starts #VM-InstancesK VMs on AWS using Docker machine and connects them to Swarm
 i=0
 while [ $i -lt $VM_InstancesK ]
 do
