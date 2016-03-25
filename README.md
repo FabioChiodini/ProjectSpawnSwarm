@@ -26,6 +26,8 @@ It also opens up all required port on AWS Security Groups and on GCE
 
 Currently it opens all ports for Docker Swarm /machine and ssh plus port 80 (for the Docker application)
 
+![Alt text](SpawnKOverview.png "SpawnKOverview")
+
 ## Environment Variables
 
 It uses a file to load the variables needed (/home/ec2-user/Cloud1).
