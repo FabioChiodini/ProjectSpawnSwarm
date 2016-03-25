@@ -9,7 +9,7 @@ https://github.com/FabioChiodini/AWSDockermachine
 
 ## Script Flow
 
-This script creates:
+This script creates (leveraging Docker-Machine):
 
 - one VM with Consul in Docker (used also to prepare docker Discovery)
 
@@ -17,14 +17,14 @@ This script creates:
 
 - A number of VMs in AWS (specified in the variable export VM_InstancesK) as "slaves"
 
-- A number of VMs in GCE (specified in the variable export GCEVM_InstancesK) as "slaves" (still TBC) 
+- A number of VMs in GCE (specified in the variable export GCEVM_InstancesK) as "slaves" 
 
 
 It then starts many Docker Containers (nginx) via Docker Swarm (the number of instances is specified in the variable export InstancesK)
 
 It also opens up all required port on AWS Security Groups and on GCE
 
-Currently it opens all ports for Docker Swarm /machine and ssh plus port 80 (for the Docker application)
+Currently it opens all ports for Docker Swarm /machine and SSH plus port 80 (to test the Docker application nginx)
 
 Here's an high level diagram: 
 
@@ -32,7 +32,7 @@ Here's an high level diagram:
 
 ## Environment Variables
 
-It uses a file to load the variables needed (/home/ec2-user/Cloud1).
+The code uses a file to load the variables needed (/home/ec2-user/Cloud1).
 
 This file has the following format:
 
@@ -62,7 +62,9 @@ export K2_GOOGLE_PROJECT=XXXXXX
 export GOOGLE_APPLICATION_CREDENTIALS="/home/ec2-user/GCEkeyfile.json"
 ```
 
-The first five variable are used by the docker-machine command and are reletaed to your AWS account
+here are the details on how these variables are used:
+
+- The first five variable are used by the docker-machine command and are related to your AWS account
 
 - AWS_DEFAULT_REGION variable is used by AWS cli (to edit the security group) 
 
@@ -91,9 +93,9 @@ To spawn VMs to GCE you need to set up an account, following are the high level 
 
 - Enable billing for your account
 
-Then you need to perform these configurations
+Then you need to perform these configurations in the /home/ec2-user/Cloud1 file:
 
-- Populate the configuration file /home/ec2-user/Cloud1 with your account details
+- Populate the configuration file with your account details
 - Enable the flag to provision to GCE
 - Indicate a number of VMs to provision to GCE
 
