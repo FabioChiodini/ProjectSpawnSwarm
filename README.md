@@ -7,6 +7,7 @@ To install the prerequisites on an AMI image use this:
 
 https://github.com/FabioChiodini/AWSDockermachine
 
+## Script Flow
 
 This script creates:
 
@@ -24,6 +25,8 @@ It then starts many Docker Containers (nginx) via Docker Swarm (the number of in
 It also opens up all required port on AWS Security Groups and on GCE
 
 Currently it opens all ports for Docker Swarm /machine and ssh plus port 80 (for the Docker application)
+
+## Environment Variables
 
 It uses a file to load the variables needed (/home/ec2-user/Cloud1).
 
@@ -62,7 +65,7 @@ GOOGLE_APPLICATION_CREDENTIALS maps to a file containing the Service account key
 
 
 
-NOTES ON Spawning to GCE
+## NOTES ON Spawning to GCE
 
 To spawn VMs to GCE you need to set up an account, following are the high level steps:
 
