@@ -80,6 +80,8 @@ To spawn VMs to GCE you need to set up an account, following are the high level 
 
 - Create credentials (Service account keys type - JSON format) and download the json file to /home/ec2-user/GCEkeyfile.json
 
+- Enable billing for your account
+
 [Following steps must still be automated]
 
 Launch interactively (one time) this command:
