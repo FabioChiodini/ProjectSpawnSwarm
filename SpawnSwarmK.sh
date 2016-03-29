@@ -148,10 +148,25 @@ do
 done
 
 
+
+
+
 #Launches $instancesK Containers using SWARM
 
 
 eval $(docker-machine env --swarm swarm-master)
+
+#Downloads Honeypots Docker file
+
+git clone https://github.com/mcowger/titaniumcrucible.git
+
+
+#Builds Honeypots
+
+#Sets variables for docker (to be incorporated in launch file)
+LOG_HOST=fabiochiodini.dyndns.com
+LOG_PORT=61116
+
 
 i=0
 while [ $i -lt $Container_InstancesK ]
@@ -159,12 +174,15 @@ do
     echo "output: $i"
     UUIDK=$(cat /proc/sys/kernel/random/uuid)
     echo Provisioning Container $i
-    docker run -d --name www-$i -p 80:80 nginx
+    #docker run -d --name www-$i -p 80:80 nginx
+    docker run -d --name www-$i -p 8080:8080 nginx
     true $(( i++ ))
 done
 
 #Opens Firewall Port 80 for all docker Machines on AWS
 aws ec2 authorize-security-group-ingress --group-name docker-machine --protocol tcp --port 80 --cidr 0.0.0.0/0
+
+aws ec2 authorize-security-group-ingress --group-name docker-machine --protocol tcp --port 8080 --cidr 0.0.0.0/0
 
 docker ps
 
