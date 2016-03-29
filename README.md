@@ -87,6 +87,12 @@ here are the details on how these variables are used:
 
 To spawn VMs to GCE you need to set up an account, following are the high level steps:
 
+- Install GCE SDK on AMI
+- curl https://sdk.cloud.google.com | bash
+- exec -l $SHELL
+- gcloud init
+
+
 - Enable the Compute Engine API
 
 - Create credentials (Service account keys type - JSON format) and download the json file to /home/ec2-user/GCEkeyfile.json
