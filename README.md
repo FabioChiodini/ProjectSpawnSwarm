@@ -85,13 +85,12 @@ here are the details on how these variables are used:
 
 ## NOTES ON Spawning to GCE
 
-To spawn VMs to GCE you need to set up an account, following are the high level steps:
-
-- Install GCE SDK on AMI
+To spawn VMs to GCE you need to Install the GCE SDK on AMI:
 - curl https://sdk.cloud.google.com | bash
 - exec -l $SHELL
 - gcloud init
 
+You also need to set up an account, following are the high level steps:
 
 - Enable the Compute Engine API
 
