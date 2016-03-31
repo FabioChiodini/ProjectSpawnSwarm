@@ -60,6 +60,8 @@ export GCEVM_InstancesK=1
 export K2_GOOGLE_AUTH_EMAIL=XXXXX@developer.gserviceaccount.com
 export K2_GOOGLE_PROJECT=XXXXXX
 export GOOGLE_APPLICATION_CREDENTIALS="/home/ec2-user/GCEkeyfile.json"
+
+export AppPortK=80
 ```
 
 here are the details on how these variables are used:
