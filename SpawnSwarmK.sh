@@ -23,7 +23,7 @@ AWS_ACCESS_KEY_ID=$K1_AWS_ACCESS_KEY
 AWS_SECRET_ACCESS_KEY=$K1_AWS_SECRET_KEY
 AWS_DEFAULT_REGION=$K1_AWS_DEFAULT_REGION
 
-echo $AWS_ACCESS_KEY_ID
+#echo $AWS_ACCESS_KEY_ID
 
 #Create Docker Consul VM 
 docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION SPAWN-CONSUL
