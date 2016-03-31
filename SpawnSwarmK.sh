@@ -19,11 +19,17 @@ echo ""
 
 echo ""
 echo "Setting env variables for AWS CLI"
+rm -rf ~/.aws/config
+mkdir ~/.aws
+
+touch ~/.aws/config
+
+echo "[default]" > ~/.aws/config
+echo "AWS_ACCESS_KEY_ID=$K1_AWS_ACCESS_KEY" >> ~/.aws/config
+echo "AWS_SECRET_ACCESS_KEY=$K1_AWS_SECRET_KEY" >> ~/.aws/config
+echo "AWS_DEFAULT_REGION=$K1_AWS_DEFAULT_REGION" >> ~/.aws/config
 
 
-AWS_ACCESS_KEY_ID=$K1_AWS_ACCESS_KEY
-AWS_SECRET_ACCESS_KEY=$K1_AWS_SECRET_KEY
-AWS_DEFAULT_REGION=$K1_AWS_DEFAULT_REGION
 
 #echo $AWS_ACCESS_KEY_ID
 
