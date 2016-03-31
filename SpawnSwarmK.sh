@@ -115,8 +115,8 @@ if [ $GCEKProvision -eq 1 ]; then
   #gcloud config set project $K2_GOOGLE_PROJECT
   #Open ports for Swarm
   gcloud compute firewall-rules create swarm-machines --allow tcp:3376 --source-ranges 0.0.0.0/0 --target-tags docker-machine --project $K2_GOOGLE_PROJECT
-  #Opens Port 80 for Docker machine on GCE
-  gcloud compute firewall-rules create http80-machines --allow tcp:80 --source-ranges 0.0.0.0/0 --target-tags docker-machine --project $K2_GOOGLE_PROJECT
+  #Opens AppPortK for Docker machine on GCE
+  gcloud compute firewall-rules create http80-machines --allow tcp:$AppPortK --source-ranges 0.0.0.0/0 --target-tags docker-machine --project $K2_GOOGLE_PROJECT
   
   #Loops for creating Swarm nodes
   j=0
@@ -180,7 +180,7 @@ git clone https://github.com/mcowger/titaniumcrucible.git
 #Builds Honeypots
 
 #Sets variables for docker (to be incorporated in launch file)
-LOG_HOST=fabiochiodini.dyndns.com
+LOG_HOST=fabiochiodini.ddns.com
 LOG_PORT=61116
 
 
@@ -191,17 +191,17 @@ do
     UUIDK=$(cat /proc/sys/kernel/random/uuid)
     echo Provisioning Container $i
     #docker run -d --name www-$i -p 80:80 nginx
-    docker run -d --name www-$i -p 8080:8080 nginx
+    docker run -d --name www-$i -p $AppPortK:$AppPortK nginx
     true $(( i++ ))
 done
 
-#Opens Firewall Port 80 for all docker Machines on AWS
-aws ec2 authorize-security-group-ingress --group-name docker-machine --protocol tcp --port 80 --cidr 0.0.0.0/0
+#Opens Firewall Port $AppPortK for all docker Machines on AWS
+aws ec2 authorize-security-group-ingress --group-name docker-machine --protocol tcp --port $AppPortK --cidr 0.0.0.0/0
 
 aws ec2 authorize-security-group-ingress --group-name docker-machine --protocol tcp --port 8080 --cidr 0.0.0.0/0
 
-docker ps
 
+#Outputs final status
 stringk=$(eval $(docker-machine env --swarm swarm-master))
 
 echo ----
