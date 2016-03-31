@@ -9,6 +9,8 @@ echo "$(tput setaf 2) Starting $VM_InstancesK Instances in AWS $(tput sgr 0)"
 if [ $GCEKProvision -eq 1 ]; then
   echo "$(tput setaf 2) Starting $GCEVM_InstancesK Instances in GCE $(tput sgr 0)"
 fi
+echo "$(tput setaf 2) Starting $Container_InstancesK Container Instances $(tput sgr 0)"
+
 
 echo ""
 echo "STARTING"
@@ -70,6 +72,8 @@ echo ----
 
 #Create Swarm Master
 docker-machine create --driver amazonec2 --amazonec2-access-key $K1_AWS_ACCESS_KEY --amazonec2-secret-key $K1_AWS_SECRET_KEY --amazonec2-vpc-id  $K1_AWS_VPC_ID --amazonec2-zone $K1_AWS_ZONE --amazonec2-region $K1_AWS_DEFAULT_REGION --swarm --swarm-master --swarm-discovery token://$SwarmTokenK swarm-master
+
+echo "$(tput setaf 2) Opening Ports for Docker Swarm$(tput sgr 0)"
 
 #Opens Firewall Port for Docker SWARM
 aws ec2 authorize-security-group-ingress --group-name docker-machine --protocol tcp --port 8333 --cidr 0.0.0.0/0
