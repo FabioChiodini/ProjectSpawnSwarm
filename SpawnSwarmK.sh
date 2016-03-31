@@ -18,7 +18,7 @@ echo ""
 
 
 echo ""
-echo "Setting env variables for AWS CLI"
+echo "$(tput setaf 2) Setting env variables for AWS CLI $(tput sgr 0)"
 rm -rf ~/.aws/config
 mkdir ~/.aws
 
