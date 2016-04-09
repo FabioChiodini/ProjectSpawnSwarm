@@ -28,7 +28,7 @@ Currently it opens all ports for Docker Swarm /machine and SSH plus port 80 (to 
 
 Here's an high level diagram: 
 
-![Alt text](SpawnKOverview.png "SpawnKOverview")
+![Alt text](/images/SpawnKOverview.png "SpawnKOverview")
 
 ## Environment Variables
 
@@ -84,7 +84,7 @@ here are the details on how these variables are used:
 
 - AppPortK is the application port and its value is used to open the relevant firewall port on GCE and AWS
 
-![Alt text](Cloud1.png "Cloud1")
+![Alt text](/images/Cloud1.png "Cloud1")
 
 
 ## NOTES ON Spawning to GCE
